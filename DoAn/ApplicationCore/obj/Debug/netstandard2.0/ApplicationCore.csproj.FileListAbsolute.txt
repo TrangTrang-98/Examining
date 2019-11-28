@@ -1,0 +1,8 @@
+C:\Users\MyPC\Desktop\DoAn\ApplicationCore\obj\Debug\netstandard2.0\ApplicationCore.AssemblyInfoInputs.cache
+C:\Users\MyPC\Desktop\DoAn\ApplicationCore\obj\Debug\netstandard2.0\ApplicationCore.AssemblyInfo.cs
+C:\Users\MyPC\Desktop\DoAn\ApplicationCore\obj\Debug\netstandard2.0\ApplicationCore.csprojAssemblyReference.cache
+C:\Users\MyPC\Desktop\DoAn\ApplicationCore\bin\Debug\netstandard2.0\ApplicationCore.deps.json
+C:\Users\MyPC\Desktop\DoAn\ApplicationCore\bin\Debug\netstandard2.0\ApplicationCore.dll
+C:\Users\MyPC\Desktop\DoAn\ApplicationCore\bin\Debug\netstandard2.0\ApplicationCore.pdb
+C:\Users\MyPC\Desktop\DoAn\ApplicationCore\obj\Debug\netstandard2.0\ApplicationCore.dll
+C:\Users\MyPC\Desktop\DoAn\ApplicationCore\obj\Debug\netstandard2.0\ApplicationCore.pdb

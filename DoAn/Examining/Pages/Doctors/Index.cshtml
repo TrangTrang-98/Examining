@@ -1,0 +1,77 @@
+@page
+@model Examining.Pages.Doctors.IndexModel
+@{
+    ViewData["Title"] = "Index";
+}
+<h1>Thông Tin Bác Sĩ</h1>
+<p>
+    <a asp-page="Create">Create New</a>
+</p> 
+<form>
+    <p>
+        <!-- Name: 
+        <select asp-for="DoctorPhone" asp-items="Model.Names">
+            <option value="">All</option>
+        </select> -->
+       Find by name:  
+        <input type="text" name="searchString" value="@ViewData["searchString"]"/>
+        <input type="submit" value="Filter"/>
+    </p>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ListDoctor[0].DoctorId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ListDoctor[0].DoctorName)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model => model.ListDoctor[0].Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ListDoctor[0].Phone)       
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.ListDoctor)
+{
+    <tr>
+         <td>
+            @Html.DisplayFor(modelItem => item.DoctorId)
+         </td>
+          <td>
+            @Html.DisplayFor(modelItem => item.DoctorName)
+            </td>
+          <td>
+            @Html.DisplayFor(modelItem => item.Gender)
+         </td>
+         <td>
+            @Html.DisplayFor(modelItem => item.Phone)
+        </td>
+        <td>
+                <a asp-page="./Edit" asp-route-id="@item.DoctorId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.DoctorId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.DoctorId">Delete</a>
+            </td>
+    </tr>
+}
+    </tbody>
+
+</table>
+
+@{
+    var preDisable = Model.ListDoctor.HasPrevious ? "" : "disabled";
+    var nextDisable = Model.ListDoctor.HasNext ? "" : "disabled";
+}
+
+<div class="container">
+    <a  class="btn btn-default @preDisable" 
+        asp-route-pageIndex="@(Model.ListDoctor.PageIndex - 1)">Previous</a>
+
+    <a  class="btn btn-default @nextDisable"
+        asp-route-pageIndex="@(Model.ListDoctor.PageIndex + 1)">Next</a>
+</div>

@@ -1,0 +1,84 @@
+@page
+@model Examining.Pages.Patients.IndexModel
+@{
+    ViewData["Title"] = "Index";
+}
+<h1>Thông Tin Bệnh Nhân</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p> 
+<form>
+    <p>
+        <!-- Name: 
+        <select asp-for="PatientName" asp-items="Model.Names">
+            <option value="">All</option>
+        </select> -->
+        Find by name: 
+        <input type="text" name="searchString" value="@ViewData["searchString"]"/>
+        <input type="submit" value="Filter"/>
+    </p>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ListPatient[0].PatientId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ListPatient[0].PatientName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ListPatient[0].Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ListPatient[0].Birthday)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ListPatient[0].Phone)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.ListPatient) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PatientId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PatientName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Birthday)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+           <td>
+                <a asp-page="./Edit" asp-route-id="@item.PatientId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.PatientId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.PatientId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+
+
+@{
+    var preDisable = Model.ListPatient.HasPrevious ? "" : "disabled";
+    var nextDisable = Model.ListPatient.HasNext ? "" : "disabled";
+}
+
+<div class="container">
+    <a  class="btn btn-default @preDisable" 
+        asp-route-pageIndex="@(Model.ListPatient.PageIndex - 1)">Previous</a>
+
+    <a  class="btn btn-default @nextDisable"
+        asp-route-pageIndex="@(Model.ListPatient.PageIndex + 1)">Next</a>
+</div>
